@@ -1,22 +1,24 @@
 
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode temp = head;
-        int len = 0;
+        ListNode slow = head;
+        ListNode fast = head;
 
-        while(temp != null){
-           temp = temp.next;
-           len++;
+        for(int i=1 ; i<=n ;i++){
+            fast = fast.next;
         }
-        //Imp
-        if(n== len) return head.next;
-        // nth from end = (len-n+1) from start 
-        // we need a temp = len-n;
-        temp = head;
-        for(int i = 1 ;i<=len-n-1 ;i++){
-            temp = temp.next;
+        if(fast == null){// n == len
+        // I have delete the head
+        return head.next;
+            
         }
-        temp.next = temp.next.next;
+        // Moves slow and fast simultaneously untill fast reached at tail
+        while(fast.next != null){
+            slow = slow.next;
+            fast = fast.next;
+        }
+        //deletion of node 
+        slow.next = slow.next.next;
         return head;
     }
 }
