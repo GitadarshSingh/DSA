@@ -24,4 +24,10 @@
 	<li><code>n == matrix.length == matrix[i].length</code></li>
 	<li><code>1 &lt;= n &lt;= 20</code></li>
 	<li><code>-1000 &lt;= matrix[i][j] &lt;= 1000</code></li>
+
+
+
+ Rotate : Include 2 step
+ step 1 : Transposing 
+ step 2: Reverse an array 
 </ul>
