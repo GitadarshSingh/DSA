@@ -12,7 +12,7 @@ class Solution {
                 start++;
             }else if(nums[start] == 0 && nums[end]==0){
                 end++;
-             }else {
+             }else {//if(nums[start] != 0)
                start++;
                 if(end <= start) end = start + 1;
             }
