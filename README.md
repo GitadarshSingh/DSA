@@ -86,7 +86,7 @@ This repo includes solutions to popular coding problems (mainly from **LeetCode*
 - 📧 Email: [heyme.adarsh05@gmail.com](mailto:heyme.adarsh05@gmail.com)
 - 💼 LinkedIn: [Adarsh Kumar Singh](https://www.linkedin.com/feed/)
 - 💻 GitHub: [GitadarshSingh](https://github.com/GitadarshSingh)
-- 🧠 LeetCode: [Adarsh_Singh05](https://leetcode.com/u/Adarsh_Singh05/)
+- 🧠 LeetCode: [Adarsh_Kumar Singh]((https://leetcode.com/u/GitadarshSingh/))
 
 ---
 
