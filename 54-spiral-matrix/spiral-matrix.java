@@ -1,41 +1,42 @@
 class Solution {
-    public List<Integer> spiralOrder(int[][] arr) {
-        int m = arr.length,  n = arr[0].length;
+    public List<Integer> spiralOrder(int[][] matrix) {
+        int m = matrix.length, n = matrix[0].length;
         List<Integer> ans = new ArrayList<>();
 
-        // Spiral Code
-        int minRow = 0 ,  maxRow = m - 1;
-        int minColumn = 0 ,  maxColumn = n - 1;
- 
-        while(minRow <= maxRow && minColumn <= maxColumn)
+        int minRow=0, maxRow = m-1;
+        int minCol=0, maxCol = n-1;
+
+        while(minRow <= maxRow && minCol <= maxCol)
         {
-            //left to right
-            for (int j = minColumn; j <= maxColumn; j++) {
-                ans.add(arr[minRow][j]);
+            //from left to rigth
+            for(int j=minCol; j<=maxCol; j++)
+            {
+                ans.add(matrix[minRow][j]);
             }
             minRow++;
-            // top to bottom
-            if(minRow>maxRow || minColumn >maxColumn) break;
-            for (int i = minRow; i <= maxRow; i++) {
-                ans.add(arr[i][maxColumn]);
+            // form top to bottom 
+            if(minRow > maxRow || minCol > maxCol) break;
+            for(int i=minRow; i<=maxRow; i++)
+            {
+                ans.add(matrix[i][maxCol]);
             }
-            maxColumn--;
+            maxCol--;
 
-            //right to left
-            if(minRow>maxRow || minColumn >maxColumn) break;
-            for (int j = maxColumn; j >= minColumn; j--) {
-                ans.add(arr[maxRow][j]);
+            if(minRow > maxRow || minCol > maxCol) break;
+            for(int j=maxCol; j>=minCol; j--)
+            {
+                ans.add(matrix[maxRow][j]);
             }
             maxRow--;
-            // bottom to top
-            if(minRow>maxRow || minColumn >maxColumn) break;
-            for (int i = maxRow; i >= minRow; i--) {
-                ans.add(arr[i][minColumn]);
+ 
+            if(minRow > maxRow || minCol > maxCol) break;
+            for(int i=maxRow;i>=minRow; i--)
+            {
+              ans.add(matrix[i][minCol]);
             }
-            minColumn++;
+            minCol++;
 
         }
         return ans;
-       }
-    
+    }
 }
