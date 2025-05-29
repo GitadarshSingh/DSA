@@ -19,10 +19,19 @@
 
 
 Method 1 : 
-class Solution {
-    public List<List<Integer>> generate(int n) {
+class Solution 
+
+
+{
+    public List<List<Integer>> generate(int n)
+    
+    
+{
         List<List<Integer>> ans = new ArrayList<>();
-        for(int i=0;i<n;i++){
+
+ 
+for(int i=0;i<n;i++)
+	{
             List<Integer> l = new ArrayList<>();
             for(int j=0;j<=i;j++){
                 l.add(1);
@@ -30,13 +39,28 @@ class Solution {
             ans.add(l);
         }
         for(int i=2;i<n;i++){
-            for(int j=1;j<=i-1;j++){
-               // ans.get(i).set(j) = ans.get(i-1).get(i)+ans.get(i-1).get(j-1); Jb humko exist value ke place par value dalte hai tho usee update karte hai "ans.set()" ki help se.
-               ans.get(i).set(j,ans.get(i-1).get(j)+ans.get(i-1).get(j-1));
-            }
-        }
-        return ans;
-    }
+
+ 
+for(int j=1;j<=i-1;j++){
+
+     
+  // ans.get(i).set(j) = ans.get(i-1).get(i)+ans.get(i-1).get(j-1); Jb humko exist value ke place par value dalte hai tho usee update karte hai "ans.set()" ki help se.
+
+	
+  ans.get(i).set(j,ans.get(i-1).get(j)+ans.get(i-1).get(j-1));
+
+	
+ }
+	    
+}
+
+ 
+ return ans;
+
+ 
+}
+
+    
 }
 
 
