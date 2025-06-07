@@ -1,26 +1,25 @@
-import java.util.*;
-
 class Solution {
     public int romanToInt(String s) {
-        Map<Character, Integer> map = new HashMap<>();
-        map.put('I', 1);
-        map.put('V', 5);
-        map.put('X', 10);
-        map.put('L', 50);
-        map.put('C', 100);
-        map.put('D', 500);
-        map.put('M', 1000);
+        int[] map = new int[26];  // Map from 'A' to 'Z'
+        map['I' - 'A'] = 1;
+        map['V' - 'A'] = 5;
+        map['X' - 'A'] = 10;
+        map['L' - 'A'] = 50;
+        map['C' - 'A'] = 100;
+        map['D' - 'A'] = 500;
+        map['M' - 'A'] = 1000;
 
         int result = 0;
+        int n = s.length();
+        
+        for (int i = 0; i < n; i++) {
+            int curr = map[s.charAt(i) - 'A'];
+            int next = (i + 1 < n) ? map[s.charAt(i + 1) - 'A'] : 0;
 
-        for (int i = 0; i < s.length(); i++) {
-            int current = map.get(s.charAt(i));
-
-            // Check if next value is larger, implying subtraction
-            if (i + 1 < s.length() && current < map.get(s.charAt(i + 1))) {
-                result -= current;
+            if (curr < next) {
+                result -= curr;
             } else {
-                result += current;
+                result += curr;
             }
         }
 
