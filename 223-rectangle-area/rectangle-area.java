@@ -8,14 +8,14 @@ class Solution {
         // Area of Rectangle B
         int areaB = (bx2 - bx1) * (by2 - by1);
 
-        // Overlapping Width and Height
-        int overlapWidth = Math.max(0, Math.min(ax2, bx2) - Math.max(ax1, bx1));
-        int overlapHeight = Math.max(0, Math.min(ay2, by2) - Math.max(ay1, by1));
+        
+        int overWidth = Math.max(0, Math.min(ax2, bx2) - Math.max(ax1, bx1));
+        int overHeight = Math.max(0, Math.min(ay2, by2) - Math.max(ay1, by1));
 
         // Overlapping Area
-        int overlapArea = overlapWidth * overlapHeight;
+        int overArea = overWidth * overHeight;
 
         // Total Area (Union)
-        return areaA + areaB - overlapArea;
+        return areaA + areaB - overArea;
     }
 }
