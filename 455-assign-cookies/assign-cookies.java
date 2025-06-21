@@ -1,21 +1,24 @@
-import java.util.Arrays;
-
 class Solution {
     public int findContentChildren(int[] g, int[] s) {
-        Arrays.sort(g); // Sort greed factors
-        Arrays.sort(s); // Sort cookie sizes
+        Arrays.sort(g);
+        Arrays.sort(s);
+        int totalSatisfiedChildern = 0;
 
-        int totalSatisfiedChildren = 0;
-        int i = 0, j = 0;
+        int i=0 , j=0;
 
-        while (i < g.length && j < s.length) {
-            if (s[j] >= g[i]) {
-                totalSatisfiedChildren++;
-                i++; // Move to next child
+        while(i<g.length && j<s.length)
+        {
+            if(s[j] >= g[i]){
+                totalSatisfiedChildern++;
+                i++;
+                j++;
             }
-            j++; // Always move to next cookie
+            else{
+                j++;
+            }
         }
+return totalSatisfiedChildern;
+           
 
-        return totalSatisfiedChildren;
     }
 }
