@@ -24,7 +24,7 @@ class Solution {
                 {
                     idx = idx+deltaUp;
                 }
-                else if(goingSouth == true) 
+                else if(goingSouth) 
                 {
                     idx = idx+deltaBelow;
                 }
