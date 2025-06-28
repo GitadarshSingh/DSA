@@ -1,22 +1,42 @@
 class Solution {
     public String convert(String s, int numRows) {
-        if (numRows == 1 || s.length() <= numRows) return s;
 
-        StringBuilder[] rows = new StringBuilder[numRows];
-        for (int i = 0; i < numRows; i++) rows[i] = new StringBuilder();
+        if(numRows == 1) return s;
+        StringBuilder sb = new StringBuilder();
 
-        int currRow = 0;
-        boolean goingDown = false;
+        for(int i=0;i<numRows;i++)
+        {
+            int idx = i;
+            int deltaBelow = 2*(numRows - i- 1);
+            int deltaUp = 2 * i;
 
-        for (char c : s.toCharArray()) {
-            rows[currRow].append(c);
-            if (currRow == 0 || currRow == numRows - 1) goingDown = !goingDown;
-            currRow += goingDown ? 1 : -1;
+            boolean goingSouth = true;
+
+            while(idx < s.length())
+            {
+                sb.append(s.charAt(idx));
+
+                if(i==0)
+                {
+                    idx = idx+deltaBelow;
+                }
+                else if(i==numRows-1)
+                {
+                    idx = idx+deltaUp;
+                }
+                else if(goingSouth == true) 
+                {
+                    idx = idx+deltaBelow;
+                }
+                else {
+                    idx = idx+deltaUp;
+                }
+                goingSouth = !goingSouth;
+            }
+
+
         }
 
-        StringBuilder result = new StringBuilder();
-        for (StringBuilder row : rows) result.append(row);
-
-        return result.toString();
+        return sb.toString();
     }
 }
