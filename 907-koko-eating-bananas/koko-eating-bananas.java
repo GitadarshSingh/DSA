@@ -2,7 +2,6 @@ class Solution {
     public boolean isPossible(int[] arr, int mid, int h) {
         int actualHours = 0;
         for (int ele : arr) {
-            // Correct and clean ceil logic
             actualHours += (ele + mid - 1) / mid;
         }
         return actualHours <= h;
@@ -19,12 +18,12 @@ class Solution {
         while (lo < hi) {
             int mid = lo + (hi - lo) / 2;
             if (isPossible(arr, mid, h)) {
-                hi = mid; // try to minimize
+                hi = mid; 
             } else {
-                lo = mid + 1; // need more speed
+                lo = mid + 1; 
             }
         }
 
-        return lo; // minimum speed found
+        return lo; 
     }
 }
