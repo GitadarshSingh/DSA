@@ -1,33 +1,31 @@
 class Solution {
     public int myAtoi(String s) {
-        if (s == null || s.isEmpty()) return 0;
+        int n = s.length();
+        int i = 0;
 
-        int i = 0, n = s.length();
-
-        // 1) Skip leading spaces
+        // skip spaces
         while (i < n && s.charAt(i) == ' ') i++;
-
         if (i == n) return 0;
 
-        // 2) Check sign
+        // sign
         int sign = 1;
         char c = s.charAt(i);
-        if (c == '+' || c == '-') {
+        if (c == '-' || c == '+') {
             sign = (c == '-') ? -1 : 1;
             i++;
         }
 
-        // 3) Convert digits with overflow check
         int result = 0;
+        int limit = Integer.MAX_VALUE / 10;
+
+        // parse digits
         while (i < n) {
             char ch = s.charAt(i);
             if (ch < '0' || ch > '9') break;
-
             int digit = ch - '0';
 
-            // Overflow check before multiplying/add
-            if (result > Integer.MAX_VALUE / 10 ||
-               (result == Integer.MAX_VALUE / 10 && digit > 7)) {
+            // overflow check
+            if (result > limit || (result == limit && digit > 7)) {
                 return (sign == 1) ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }
 
