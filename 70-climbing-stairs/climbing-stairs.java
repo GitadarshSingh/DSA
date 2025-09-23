@@ -1,5 +1,10 @@
 class Solution {
     public int climbStairs(int n) {
+        //Method 1 : 
+        // if(n <= 2) return n;
+        // return climbStairs(n-1) + climbStairs(n-2);
+
+        // Method 2 :
         if(n <= 2) return n;
         int[] dp = new int[n+1];
         dp[1] = 1;
