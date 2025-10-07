@@ -1,29 +1,23 @@
 class Solution {
     public String countAndSay(int n) {
-        if(n==1) return "1"; // Base Case
-        
-        String result = "1";
-        for(int i=2; i<=n; i++)
+        if(n==1) return "1";
+        String s = countAndSay(n-1) + '@';
+
+        String ans = "";
+        int i=0, j=0;
+
+        while(j<s.length())
         {
-            StringBuilder sb = new StringBuilder();
-            int count = 1;
-            char prevChar = result.charAt(0);
+            if(s.charAt(i) == s.charAt(j)) j++;
+            else
+            {
+                int len = j-i;
+                ans += len;
+                ans += s.charAt(i);
+                i=j;
 
-             for (int j = 1; j < result.length(); j++) {
-                if (result.charAt(j) == prevChar) {
-                    count++;
-                } else {
-                    sb.append(count).append(prevChar);
-                    prevChar = result.charAt(j);
-                    count = 1;
-                }
             }
-            sb.append(count).append(prevChar); // Append last group
-            result = sb.toString(); 
         }
-
-
-        return result;
-
+        return ans;
     }
 }
