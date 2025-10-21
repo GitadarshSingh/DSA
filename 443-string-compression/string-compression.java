@@ -1,34 +1,38 @@
 class Solution {
-    public int compress(char[] arr) {
-        StringBuilder ans = new StringBuilder();
+    public int compress(char[] chars) {
+        int n = chars.length;
+
+        int index = 0;
         int i = 0;
-        int j = 0;
 
-        while (j < arr.length) {
-            if (arr[i] == arr[j]) {
-                j++;
-            } else {
-                ans.append(arr[i]);
-                int len = j - i;
-                if (len > 1) {
-                    ans.append(len);
-                }
-                i = j;
+        while(i < n)
+        {
+            char curr_char = chars[i];
+            int count = 0;
+
+          // find count of duplicates
+            while(i<n && chars[i] == curr_char)
+            {
+                count++;
+                i++;
             }
-        }
 
-       
-        ans.append(arr[i]);
-        int len = j - i;
-        if (len > 1) {
-            ans.append(len);
-        }
+            // Now do the assigning work
+            chars[index] = curr_char;
+            index++;
 
-        
-        for (i = 0; i < ans.length(); i++) {
-            arr[i] = ans.charAt(i);
-        }
+            if(count > 1)
+            {
+                String count_str = Integer.toString(count);
+                for(char ele : count_str.toCharArray())
+                {
+                    chars[index] = ele;
+                    index++;
+                }
+            }
+            }
+            return index;
 
-        return ans.length();
-    }
+        }       
+    
 }
