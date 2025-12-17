@@ -9,7 +9,7 @@ class Solution {
         else{
             a.next = b;
             a = b;
-            b=b.next;
+            
         }
        }
        a.next = null;
