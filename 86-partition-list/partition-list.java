@@ -21,7 +21,7 @@ class Solution {
         }
         a=a.next;
         b=b.next;
-        if(a==null) return b;
+        if(a==null) return b; // important line
         tempA.next = b; //list a attached to listb
         tempB.next = null;
 
