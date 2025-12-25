@@ -1,36 +1,54 @@
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
 class Solution {
     public ListNode swapPairs(ListNode head) {
-        // Dummy node to simplify head handling
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
+        if(head == null || head.next == null) return head;
+        ListNode a = new ListNode(-1);
+        ListNode b = new ListNode(-1);
+        ListNode tempA = a;
+         ListNode tempB = b;
+        ListNode temp = head;
 
-        ListNode prev = dummy;
-
-        while (head != null && head.next != null) {
-            // Identify the two nodes to be swapped
-            ListNode first = head;
-            ListNode second = head.next;
-
-            // Swapping
-            prev.next = second;
-            first.next = second.next;
-            second.next = first;
-
-            // Repositioning for next swap
-            prev = first;
-            head = first.next;
+        int index = 1;
+        while(temp != null)
+        {
+            if((index & 1) == 1){
+                tempA.next = temp;
+                tempA = tempA.next;    
+            }
+            else{
+                tempB.next = temp;
+                tempB = tempB.next;
+            }
+            temp = temp.next;
+            index++;
         }
+        tempA.next = null;
+        tempB.next = null;
 
-        return dummy.next;
+
+        //Merge Two Sorted Linked List. 2 Lists are 
+        // a.next and b.next
+        ListNode dummy = new ListNode(-2);
+        ListNode td = dummy;
+        ListNode tempD = a.next;
+        ListNode tempE = b.next;
+
+        while(tempD != null || tempE != null)
+        {
+            if(tempE != null ){
+                td.next = tempE;
+                td = td.next;
+                tempE = tempE.next;
+            }
+            if(tempD != null ) {
+                td.next = tempD;
+                td = td.next;
+                tempD = tempD.next;
+            }
+            
+        }
+       td.next = null;
+return dummy.next;
+
+         
     }
 }
