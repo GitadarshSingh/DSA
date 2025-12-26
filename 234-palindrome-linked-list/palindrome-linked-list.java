@@ -1,12 +1,5 @@
 class Solution {
     public ListNode reverseList(ListNode head){
-        // if(head == null || head.next == null) return head; //base case 
-        // ListNode a = head.next;
-        // ListNode nh = reverseList(a);
-        // a.next = head;
-        // head.next = null;
-        // return nh;
-
         ListNode current = head;
         ListNode previous = null;
          ListNode Next = head;
@@ -24,28 +17,26 @@ class Solution {
     
     public boolean isPalindrome(ListNode head) {
         if(head.next == null) return true;
-        ListNode slow = head;
-        ListNode fast = head;
-
-        while(fast.next != null && fast.next.next != null)
-        {
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-        
-        ListNode newHead = slow.next;
-        slow.next = null;
-
-        ListNode reverseList = reverseList(newHead);
-
+        ListNode newHead = new ListNode(head.val);
         ListNode temp1 = head;
-        ListNode temp2 = reverseList;
+        ListNode temp2 = newHead;
+        while(temp1 != null)
+        {
+            ListNode temp = new ListNode(temp1.val);
+            temp2.next = temp; 
+            temp2 = temp2.next;
+            temp1 = temp1.next;
+        }
+        newHead = reverseList(newHead);
+        
+        temp1 = head;
+        temp2 = newHead;
 
-        while( temp2 != null )
+        while(temp1 != null)
         {
             if(temp1.val != temp2.val) return false;
             temp1 = temp1.next;
-            temp2 = temp2.next;  
+            temp2 = temp2.next;
         }
         return true;
 
