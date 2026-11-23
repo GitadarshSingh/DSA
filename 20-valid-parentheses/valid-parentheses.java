@@ -21,8 +21,15 @@ class Solution {
              }
            }
         }
-        if(st.isEmpty()) return true;
-        else return false;
+        if(st.isEmpty())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
         
         
     }
